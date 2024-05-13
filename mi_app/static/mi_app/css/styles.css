@@ -1,0 +1,33 @@
+/* Estilos para el navbar */
+.navbar {
+    background-color: #007bff; /* Azul */
+    color: #fff; /* Blanco */
+    padding: 10px 0;
+    text-align: center;
+}
+
+.navbar-title {
+    font-size: 1.5em;
+}
+
+/* Estilos para el contenedor del dashboard */
+.dashboard-container {
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Estilos para el botón */
+#toggleButton {
+    background-color: #28a745; /* Verde */
+    color: #fff; /* Blanco */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+#toggleButton.red {
+    background-color: #dc3545; /* Rojo */
+}

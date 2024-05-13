@@ -54,7 +54,7 @@ ROOT_URLCONF = "PowerBIInformeCarrusel.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "mi_app" / "templates"],  # Ruta a la carpeta de plantillas de mi_app
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

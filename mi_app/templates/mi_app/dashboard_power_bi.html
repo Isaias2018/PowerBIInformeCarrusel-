@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Power BI</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        /* Estilos para el navbar */
+        .navbar {
+            background-color: #007bff; /* Azul */
+            color: #fff; /* Blanco */
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .navbar-title {
+            font-size: 1.5em;
+        }
+
+        .dashboard-container {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #toggleButton {
+            background-color: #28a745; /* Verde */
+            color: #fff; /* Blanco */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        #toggleButton.red {
+            background-color: #dc3545; /* Rojo */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <span class="navbar-title">REPORTES GERENCIAL OSINERGMIN</span>
+    </nav>
+
+    <!-- Contenedor para mostrar el dashboard de Power BI -->
+    <div class="dashboard-container">
+        <iframe id="powerbi-dashboard" width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiMjgyZGY5MzktYWVmNy00MjkwLWIzZGMtMWQ5MzQxYjcwNmM4IiwidCI6IjBlMGNiMDYwLTA5YWQtNDlmNS1hMDA1LTY4YjliNDlhYTFmNiIsImMiOjR9&pageName=ReportSection3470a15b90a3e15a8a51&pageName=ReportSection"></iframe>
+
+        <!-- Botón para activar/desactivar el cambio dinámico de páginas -->
+        <button id="toggleButton">Activar cambio dinámico</button>
+    </div>
+
+    <script>
+        // Lista de URLs de las páginas del dashboard
+        var dashboardPages = [
+            "https://app.powerbi.com/view?r=eyJrIjoiMjgyZGY5MzktYWVmNy00MjkwLWIzZGMtMWQ5MzQxYjcwNmM4IiwidCI6IjBlMGNiMDYwLTA5YWQtNDlmNS1hMDA1LTY4YjliNDlhYTFmNiIsImMiOjR9&pageName=ReportSection3470a15b90a3e15a8a51&pageName=ReportSection",
+            "https://app.powerbi.com/view?r=eyJrIjoiMjgyZGY5MzktYWVmNy00MjkwLWIzZGMtMWQ5MzQxYjcwNmM4IiwidCI6IjBlMGNiMDYwLTA5YWQtNDlmNS1hMDA1LTY4YjliNDlhYTFmNiIsImMiOjR9&pageName=ReportSection3470a15b90a3e15a8a51&pageName=ReportSectiond7b7e0795d87887459ac",
+            "https://app.powerbi.com/view?r=eyJrIjoiMjgyZGY5MzktYWVmNy00MjkwLWIzZGMtMWQ5MzQxYjcwNmM4IiwidCI6IjBlMGNiMDYwLTA5YWQtNDlmNS1hMDA1LTY4YjliNDlhYTFmNiIsImMiOjR9&pageName=ReportSection3470a15b90a3e15a8a51&pageName=ReportSectiondce00ec05e0d8bb01d19"
+        ];
+
+        var currentPageIndex = 0;
+
+        var powerbiDashboard = document.getElementById("powerbi-dashboard");
+
+        var toggleButton = document.getElementById("toggleButton");
+
+        var isDynamicChangeEnabled = false;
+
+        function changeDashboardPage() {
+            if (!isDynamicChangeEnabled) {
+                return;
+            }
+
+            currentPageIndex = (currentPageIndex + 1) % dashboardPages.length;
+            
+            var nextPageUrl = dashboardPages[currentPageIndex];
+
+            powerbiDashboard.src = nextPageUrl;
+        }
+
+        var intervalId = setInterval(changeDashboardPage, 20000);
+
+        toggleButton.addEventListener("click", function() {
+            isDynamicChangeEnabled = !isDynamicChangeEnabled;
+
+            toggleButton.textContent = isDynamicChangeEnabled ? "Desactivar cambio dinámico" : "Activar cambio dinámico";
+            toggleButton.classList.toggle("red");
+        });
+    </script>
+</body>
+</html>
